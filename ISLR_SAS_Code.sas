@@ -30,4 +30,22 @@ proc sgplot data=ISLR.Wages;
 	/*--Y Axis--*/
 	yaxis grid;
 run;
+proc sgplot data=ISLR.Wages;
+	/*--Fit plot settings--*/
+	reg x=year y=wage / nomarkers name='Regression';
+	/*--Scatter plot settings--*/
+	scatter x=year y=wage / transparency=.75 name='Scatter';
+	/*--X Axis--*/
+	xaxis grid;
+	/*--Y Axis--*/
+	yaxis grid;
+run;
+proc sgplot data=ISLR.Wages;
+	/*--Box Plot settings--*/
+	vbox wage / category=education fillattrs=(color=CXcad5e5) name='Box';
+	/*--Category Axis--*/
+	xaxis fitpolicy=splitrotate;
+	/*--Response Axis--*/
+	yaxis grid;
+run;
 ods graphics / reset;
