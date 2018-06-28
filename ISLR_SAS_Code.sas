@@ -8,18 +8,12 @@
  * Update Log: 
  * 
  *****************************************************************************/
-libname ISLR base '/gpfsFS2/sasdata/sasusers/s913732/profdev/ISLR/Data';
+libname ISLR base '/home/michaelstephenjo0/IntroStatLrng/Data';
 
 *** Chapter 1;
 ** figure 1.1;
-filename filref '/gpfsFS2/sasdata/sasusers/s913732/profdev/ISLR/Data/Wage.csv';
-proc import datafile=filref 
-	dbms=CSV
-	out=ISLR.Wages;
-	getnames=yes;
-run;
 ods graphics / reset imagemap height=640px width=480px;
-proc sgplot data=ISLR.Wages;
+proc sgplot data=ISLR.Wage;
 	/*--Fit plot settings--*/
 	reg x=age y=wage / nomarkers name='Regression';
 	pbspline x=age y=wage / nomarkers name='PBSpline';
@@ -30,7 +24,7 @@ proc sgplot data=ISLR.Wages;
 	/*--Y Axis--*/
 	yaxis grid;
 run;
-proc sgplot data=ISLR.Wages;
+proc sgplot data=ISLR.Wage;
 	/*--Fit plot settings--*/
 	reg x=year y=wage / nomarkers name='Regression';
 	/*--Scatter plot settings--*/
@@ -40,7 +34,7 @@ proc sgplot data=ISLR.Wages;
 	/*--Y Axis--*/
 	yaxis grid;
 run;
-proc sgplot data=ISLR.Wages;
+proc sgplot data=ISLR.Wage;
 	/*--Box Plot settings--*/
 	vbox wage / category=education fillattrs=(color=CXcad5e5) name='Box';
 	/*--Category Axis--*/
